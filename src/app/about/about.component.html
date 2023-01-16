@@ -1,0 +1,14 @@
+<p>about works!</p>
+{{about.id}}
+
+{{about.name}}
+{{about1.chk}}
+{{about1.search}}
+{{fragment}}
+<button [routerLink]="['/about',32,'jyoti']"  [queryParams]="{idd:98,search:'yggggy'}">get jyoti data</button>
+
+<button [routerLink]="['/about',45,'sonu']" [queryParams]="{idd:12,search:'90'}" [fragment]="'jyoo'"
+>get details of sonu</button>
+
+<button (click)="getDetails()">get details of button on methd</button>
+<button (click)="editdata()">edit data</button>

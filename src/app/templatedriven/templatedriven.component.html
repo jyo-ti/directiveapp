@@ -1,0 +1,15 @@
+<form #f="ngForm" (ngSubmit)="onsubmit()">
+    <input type="text" placeholder="name" (input)="checkdata()" name="name" [(ngModel)]="name" required email>
+   <span *ngIf="f.controls.name && f.controls.name.invalid && f.controls.name.touched">please enter mail</span>
+   <br><div *ngIf="!groupdata.valid">Model data not valid</div> 
+   <br><div ngModelGroup="group" #groupdata="ngModelGroup">
+    <input type="text" placeholder="age" name="age" ngModel><br>
+    <input type="text" placeholder="lastname" name="lastname" [ngModel] #lastname="ngModel" required>
+    <br><span *ngIf="lastname && lastname.invalid && lastname.touched">enter lastname</span>
+    {{name}}
+</div>
+    <button type="submit" [disabled]="!f.valid"> click</button>
+    <button type="button" (click)="fillvalues()">Fill Values using setvalue</button>
+    <button type="button" (click)="fillpatchvalue()">Fill values using patchvalue</button>
+    <button type="button" (click)="reset()">Reset</button>
+</form>

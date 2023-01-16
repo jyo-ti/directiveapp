@@ -1,0 +1,36 @@
+Namee::::{{xo.name|uppercase}}
+
+Date:{{xo.date|date:'fullDate'|uppercase}}
+
+custom pipe jyotiprja::::{{'jyotiprja'|cutstringpipe}}
+
+<form #f="ngForm" (ngSubmit)="adddata(f)">
+    <input type="text" placeholder="name" ngModel name="name">
+    <input type="text" placeholder="designation" ngModel name="designation">
+    <button type="submit">Submit data</button>
+</form>
+
+
+<div>
+    <div>
+        <input type="text" placeholder="name" [(ngModel)]="search">
+        <input type="text" placeholder="designation" [(ngModel)]="designation">
+    </div>
+    <table border="1">
+        <tr>
+            <th>name</th>
+            <th>designation</th>
+        </tr>
+        <tr *ngFor="let r of arr|filterpi:search:designation">
+            <td>{{r.name}}</td>
+            <td>{{r.designation}}</td>
+        </tr>
+    </table>
+</div>
+
+enter limit<input type="text" [(ngModel)]="limit">
+{{chk|cutstringpipe:limit}}
+
+<br>
+<b>before async pipe Async status:::</b>{{status}}
+<b>after async pipe Async status(use wen http request or asynchronous or callback or observable or promise):::</b>{{status|async}}

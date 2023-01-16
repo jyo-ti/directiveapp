@@ -1,0 +1,31 @@
+<form [formGroup]="reactiveform" (ngSubmit)="onSubmit()">
+    Name<input type="text" formControlName="name" required>
+     <span *ngIf="reactiveform.controls.name.invalid && reactiveform.controls.name.touched">Please enter valid name</span>
+    <div formGroupName="useragegender">
+   <br>Age<input type="text" formControlName="age" required>
+   <span *ngIf="reactiveform.controls.useragegender.get('age')?.invalid">Hi invalid age</span>
+    <br>Gender<select formControlName="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select>
+    
+</div>
+<div>
+    <input type="text" formControlName="email">
+    <span *ngIf="reactiveform.controls.email.invalid&&reactiveform.controls.email.touched">invalid email</span>
+</div>
+<div formArrayName="hobbies">
+<div *ngFor="let x of hobbiescontrols;let i=index">
+<input type="text" [formControlName]="i">
+</div>
+</div>
+<div formGroupName="extra">
+    <div *ngFor="let x of extracontrols;let i=index">
+        <input type="text" [formControlName]="i">
+    </div>
+</div>
+    <br><button [disabled]="reactiveform.invalid">Submit</button>
+    <button type="button" (click)="addHobby()">Add Hobbies</button>
+    <button type="button" (click)="extra()">Extra</button>
+    <button type="button" (click)="reactiveform.reset()">Reset</button>
+</form>
