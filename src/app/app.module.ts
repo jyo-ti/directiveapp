@@ -24,6 +24,11 @@ import { ReactiveformComponent } from './reactiveform/reactiveform.component';
 import { PipesComponent } from './pipes/pipes.component';
 import { custompipe } from './pipes/custompipe.pipe';
 import { filterpipe } from './pipes/filterpipe.pipe';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { httpservice } from './service/httpserv.service';
+import { DatacomponentComponent } from './datacomponent/datacomponent.component';
+import { interceptorhttp } from './interceptors/myinterceptor.interceptor';
+import { secondinterceptor } from './interceptors/secondinterceptor.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,14 +47,20 @@ import { filterpipe } from './pipes/filterpipe.pipe';
     TemplatedrivenComponent,
     ReactiveformComponent,
     PipesComponent,
+    DatacomponentComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
     ,FormsModule
+    ,HttpClientModule
     ,ReactiveFormsModule
+    
   ],
-  providers: [serviceauth,guardservice,deactivate,userservice,resolveservice],
+  //intercptors will execute in the same order they have provided
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:interceptorhttp,multi:true},
+    {provide:HTTP_INTERCEPTORS,useClass:secondinterceptor, multi:true},
+    serviceauth,guardservice,httpservice,deactivate,userservice,resolveservice],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

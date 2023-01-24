@@ -1,0 +1,11 @@
+<form [formGroup]="customer" (ngSubmit)="click()">
+    <input type="text" placeholder="designation" formControlName="designation">
+    <input type="text" placeholder="name" formControlName="name">
+    <button>click</button>
+    <button type="button" (click)="getdata()">Get</button>
+    </form>
+
+
+    <div *ngFor="let x of mydata">
+{{x.employee_name}}
+    </div>

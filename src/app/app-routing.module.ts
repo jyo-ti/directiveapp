@@ -14,6 +14,8 @@ import { MainComponent } from './main/main.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { ReactiveformComponent } from './reactiveform/reactiveform.component';
 import { TemplatedrivenComponent } from './templatedriven/templatedriven.component';
+import { HttpsComponent } from './https/https.component';
+import { DatacomponentComponent } from './datacomponent/datacomponent.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -26,6 +28,7 @@ const routes: Routes = [
 {path:'template', component:TemplatedrivenComponent},
 {path:'Reactiveform',component:ReactiveformComponent},
 {path:'pipe',component:PipesComponent},
+{path:'httppractice',component:DatacomponentComponent},
 {path:'**',redirectTo:'notfound'},
 ];
 
