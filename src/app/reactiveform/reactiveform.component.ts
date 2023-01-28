@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormControl,FormArray, Validators, AsyncValidatorFn} from '@angular/forms';
 import {Observable} from 'rxjs'
+import { dummyservice } from '../dummy.service';
 @Component({
   selector: 'app-reactiveform',
   templateUrl: './reactiveform.component.html',
@@ -48,9 +49,12 @@ return null;
 reset(){
   this.reactiveform.reset();
 }
-  constructor() { }
+  constructor(private dummyservice:dummyservice) {
+
+   }
 
   ngOnInit(): void {
+    this.dummyservice.printlog("hello from reactive form");
     this.reactiveform.statusChanges.subscribe(value=>console.log(value))
     this.reactiveform.setValue({
       name:'jyo',

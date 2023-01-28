@@ -2,7 +2,7 @@ import { HttpEventType, HttpHandler, HttpInterceptor, HttpParams, HttpRequest } 
 import { tap } from 'rxjs/operators';
 export class interceptorhttp implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler) {
-        //if(request.url === 'http://localhost:6789/#/httppractice')
+        if(request.url === 'http://localhost:6789/#/demologin')
         console.log('my first interceptor');
         const requestupdated = request.clone({
             params: request.params.append('myparam', 'jyoyi'),

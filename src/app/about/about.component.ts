@@ -7,6 +7,7 @@ import { ActivatedRoute,Router } from '@angular/router';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
+  array=[4,5,,6,6,6,6]
 about:{id:number,name:string}={id:0,name:''};
 about1:{chk:number,search:string}={chk:0,search:''};
 fragment:any;
@@ -42,6 +43,7 @@ this.about1={
     this.fragment=x
    })
   }
+  
   editdata(){
 this.router.navigate(['/abouts',90,'terfdh','edit'],{queryParamsHandling:'preserve'})
   }

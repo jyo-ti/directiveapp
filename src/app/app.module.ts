@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {colorDir} from '../directive/colordirective.directive';
@@ -8,27 +7,21 @@ import {strucDire} from '../directive/structuraldirective.directive';
 import {strucrenddir} from '../directive/rendererattributedirective.directive';
 import { HomeComponent } from './home/home.component';
 import { MainComponent } from './main/main.component';
-import { AboutComponent } from './about/about.component';
-import { AboutsComponent } from './abouts/abouts.component';
-import { EditComponent } from './edit/edit.component';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { serviceauth } from 'src/auth.service';
-import { guardservice } from 'src/auth.guard.service';
-import { deactivate } from 'src/deactivate.guard.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditusergetdatausingresolveComponent } from './editusergetdatausingresolve/editusergetdatausingresolve.component';
-import { userservice } from 'src/user.service';
-import { resolveservice } from 'src/resolve.service';
 import { TemplatedrivenComponent } from './templatedriven/templatedriven.component';
-import { ReactiveformComponent } from './reactiveform/reactiveform.component';
 import { PipesComponent } from './pipes/pipes.component';
 import { custompipe } from './pipes/custompipe.pipe';
 import { filterpipe } from './pipes/filterpipe.pipe';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { httpservice } from './service/httpserv.service';
+import { HttpClientModule } from '@angular/common/http';
 import { DatacomponentComponent } from './datacomponent/datacomponent.component';
-import { interceptorhttp } from './interceptors/myinterceptor.interceptor';
-import { secondinterceptor } from './interceptors/secondinterceptor.interceptor';
+import { DemologinpageComponent } from './demologinpage/demologinpage.component';
+import { AlertmodalComponent } from './alertmodal/alertmodal.component';
+import { directivecomponentfactory } from 'src/directive/componentfactoryresolverdirective.directive';
+import { usermodule } from './user.module';
+import { reactiveformmodule } from './reactiveform.module';
+import { sharedmodule } from './shared.module';
+import { coreModule } from './core.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,28 +32,26 @@ import { secondinterceptor } from './interceptors/secondinterceptor.interceptor'
     strucrenddir,
     HomeComponent,
     MainComponent,
-    AboutComponent,
-    AboutsComponent,
-    EditComponent,
     NotfoundComponent,
     EditusergetdatausingresolveComponent,
     TemplatedrivenComponent,
-    ReactiveformComponent,
     PipesComponent,
     DatacomponentComponent,
+    DemologinpageComponent,
+    directivecomponentfactory,
+    AlertmodalComponent,
+    
   ],
   imports: [
     BrowserModule,
+    coreModule,
+    reactiveformmodule,
     AppRoutingModule
-    ,FormsModule
-    ,HttpClientModule
-    ,ReactiveFormsModule
-    
+    ,HttpClientModule,
+    sharedmodule,
   ],
   //intercptors will execute in the same order they have provided
-  providers: [{provide:HTTP_INTERCEPTORS,useClass:interceptorhttp,multi:true},
-    {provide:HTTP_INTERCEPTORS,useClass:secondinterceptor, multi:true},
-    serviceauth,guardservice,httpservice,deactivate,userservice,resolveservice],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

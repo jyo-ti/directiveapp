@@ -1,3 +1,5 @@
+<app-sharedcom></app-sharedcom>
+
 <form [formGroup]="reactiveform" (ngSubmit)="onSubmit()">
     Name<input type="text" formControlName="name" required>
      <span *ngIf="reactiveform.controls.name.invalid && reactiveform.controls.name.touched">Please enter valid name</span>

@@ -5,6 +5,8 @@
 {{about1.chk}}
 {{about1.search}}
 {{fragment}}
+
+<div *ngFor="let x of array">{{x}}</div>
 <button [routerLink]="['/about',32,'jyoti']"  [queryParams]="{idd:98,search:'yggggy'}">get jyoti data</button>
 
 <button [routerLink]="['/about',45,'sonu']" [queryParams]="{idd:12,search:'90'}" [fragment]="'jyoo'"

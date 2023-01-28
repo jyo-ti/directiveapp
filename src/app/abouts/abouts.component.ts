@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { dummyservice } from '../dummy.service';
 
 @Component({
   selector: 'app-abouts',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dummyservice:dummyservice) { }
 
   ngOnInit(): void {
+    this.dummyservice.printlog("hello from abouts componnet")
   }
 
 }
